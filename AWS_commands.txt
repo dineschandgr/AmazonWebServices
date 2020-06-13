@@ -1,0 +1,99 @@
+yum install httpd -y
+service httpd start
+chkconfig httpd on (to restart apache on ec2 restart)
+service httpd status
+
+aws configure
+aws -- version
+ls ~/.aws
+ls ~/.aws/configure
+
+cat credentials
+cat config
+
+aws s3 ls
+
+aws configure --profile my-other-aws-acc
+
+aws s3 ls --profile my-other-aws-acc
+
+aws s3 ls s3://bucketofdineshchand
+
+aws s3 cp s3://bucketofdineshchand/Gayathri_Resume.doc  s3://bucketofdineshchand/test-dinesh/ --sse AES256
+
+aws s3 mb s3://my2ndbucketofdc
+
+aws s3 rb s3://my2ndbucketofdc 
+
+aws s3 rb s3://my2ndbucketofdc --force (when there are files inside bucket)
+
+
+aws ec2 run-instances --dry-run --image-id ami-048a01c78f7bae4aa --instance-type t2.micro
+
+aws sts decode-authorization-message --encoded-message 1LphsVAd7ZEaPQJtMlSLSYSIrOGOYh3NYUmoqdQzdFOtJVgYBfGjVYmRMAkIJBbFv1ioY_oGqgdwHNoDg9nxbT0gLxTG5Pt3UUGT7kRQ9tRbmHrgjGdRfWhfL_Jot3vDRiP4wxbNmPTMkF6Rj07aiKnFNsVZWmScfuHiu5SxnEh6CgLjAM3NEJ-egHCDxgsx9bh14v0RyspFaTFyU0d2hvWaPHDgAxEyfeNOvOgkIYS8BDiZP6KOrDjUG9-HFV43mAnYsSb8cFqwcj26m7DXX2T7DGKd4xodqJbgdlXdD9ZQzmeAZEaMnoG3SOcqcjuvJ2n2vmlNhHRaVMrJj1j518oz10jDlDhL5rrs8BGfT6oQERwNbshjYdFXH4X_A7q1MGxlU-UIR7-iykun04alvPZnJHPG-TNh89P50kLVdRto16acDvdzjQwplAxOuzGaDkN-EJkVPpo9khLjPqVooFHxZ-hmz8XiqO0ekIGRzFiRs8JKKwFoE0B1MjBaRmZapM_P2_zOgYWxJVJXDv_Ac4ywLUYO8oUALP7TkiwmCv8SghgtfFYXzPXky5I_kv0kTXXgvlq74p_eFQfFcvkVf8ZSOHC8hDVaHt2NI9gOuhuH-tQq7lc3XuYo_uNRpA9vUPelBV7d7VQpSW2oeX3XXV17E9KRuVvJI7CeMrV3n17OO32pbaXDeKnEqMe6h29scTAwzw
+
+
+curl http://169.254.169.254/latest/
+curl http://169.254.169.254/latest/meta-data/
+
+
+GIT 
+
+generate https credentials and use below command
+
+git clone "URL"
+
+cp d:/aws/code/aws-cicd/nodejs-v2-blue/* .
+
+git status
+
+git add .
+
+git commit -m "my code"
+
+git push
+
+$ sudo service tomcat8 start
+
+$ sudo service tomcat8 stop
+
+vi logs.txt
+
+enter + :q to quit
+
+
+SQS
+
+aws sqs list-queues
+
+C:\>aws sqs list-queues --region ap-southeast-1
+
+C:\>aws sqs send-message --queue-url https://ap-southeast-1.queue.amazonaws.com/108317692498/myFirstQueue --message-body dc-world
+
+aws sqs receive-message --queue-url https://ap-southeast-1.queue.amazonaws.com/108317692498/myFirstQueue
+
+aws sqs receive-message --queue-url https://ap-southeast-1.queue.amazonaws.com/108317692498/myFirstQueue --wait-time-seconds 20
+
+aws sqs delete-message --queue-url https://ap-southeast-1.queue.amazonaws.com/108317692498/myFirstQueue --receipt-handle AQEBft6dVMkhE6BMnrBr5kTChKr9gTTIR0WJsvslfwWidMifOUEU6/cKXJhVz1l5lVNWBG2DhCPbVFHAjueQlFmAF+2dn+9K0YYJ5ibzvXje5JaBeWIDaAW+cBDfD/2QapL2Ds1YxbX1LVZH5jqXWZJ1PPftRrB/BvTqgzRrdiVQyUavEQL/UTZjqFfnOZjNMVamJQ59DYq3/QzqqmwlCALcRhvLE6s7zFwju9polcNuF7O7ES6VOo7VaDFLmMKoNof0CPZqqBRfzqqipczECh+oox6XqnBCqAPDpnIqUkhFUVyUERSuCTIr0lYHW53fIn8ETP3aSA083Yzv9a/kCZz8W//firldXr6ntRYjwnnSylcPxuO950Uor7+g5+EjBPUN+nXjHsYLA+qiKNZ0ogKg+A==
+
+
+docker
+
+docker ps
+
+docker inspect container-id
+
+docker inspect 3011d028ed4e | grep "IPAddress" -> to find container-ip
+
+curl localhost:8888 -> to curl tomcat in host port
+
+curl container-ip:8888 -> to curl tomcat in container port
+
+
+
+SSM Param Store
+
+
+aws ssm get-parameters --names myapp dbpwd --with-decryption
+
+aws ssm get-parameters-by-path /my-app --recursive --with-decryption
